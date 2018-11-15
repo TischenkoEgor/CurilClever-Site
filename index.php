@@ -12,7 +12,7 @@
 
 		<div class="page">
 			<div style="text-align: center">
-				<h2>Главная страница: управление экспресс-турами</h2>
+				<h2>Главная страница: управление турами</h2>
 			</div>
 			<div id="preview1stline">
 				<div class="preview" id="orders">
