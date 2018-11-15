@@ -1,0 +1,110 @@
+.header_container{
+    margin: 0 auto;
+    height: 120px;
+    width:1250px;
+}
+.header_container:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.site_logo{
+    float: left;
+    height: 120px;
+}
+#logoimg{
+    height: 120px;;
+}
+.menucontainer{
+    float: left;
+    padding-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+ul.menulist {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+   }
+   ul.menulist li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+    border: 1px solid #000; /* Рамка вокруг текста */
+    padding: 3px; /* Поля вокруг текста */
+   }
+   ul.menulist li a{
+       text-decoration: none;
+       color: rgb(61, 151, 211);
+   }
+.calllink{
+    text-align: center; 
+}
+.contact_container{
+    float:left;
+    width: 160;
+    text-align: center;
+    padding-top: 10px;
+}
+.page{
+    width:1250px;
+    margin:0 auto;
+
+}
+#preview1stline{
+    margin: 0 auto;
+    overflow:auto;
+    text-align: center;
+}
+#preview1stline:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.preview{
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: rgb(61, 151, 211);
+    height: 60px;
+    width: 300;
+    height:350px;
+    float: left;
+    margin: 50px;
+    text-align: left;
+    padding-left: 10px;
+}
+.ordershortview{
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+}
+#touristtraveltoday{
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: rgb(61, 151, 211);
+    width: 1110px;
+    height: 380px;
+    margin:50px;
+    float:left;
+    text-align: left;
+    padding-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer_container{
+    margin: 0 auto;
+    width: 1250px;
+    text-align: center;
+}
