@@ -26,7 +26,7 @@
 					or die("Ошибка " . mysqli_error($link));
 
 					// выполняем операции с базой данных
-					$query ="SELECT * FROM clients";
+					$query ="SELECT * FROM clients order by id desc LIMIT 10";
 					$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
 					if($result)
 					{
@@ -43,6 +43,9 @@
 							</div>
 							<?
 						}
+						?>
+							<a href="clients.php">просмотреть всех клиентов</a>
+						<?
 						// очищаем результат
 						mysqli_free_result($result);
 					}
