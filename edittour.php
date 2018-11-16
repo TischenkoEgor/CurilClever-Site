@@ -12,8 +12,14 @@
 
         <div class="page">
         <?
-        $order_id = -1;
-        $OrderName = "";
+        // edittour.php?tourid=%&create=%
+        // если флаг create=1 включаем все поля для редактирования
+        // если  
+
+        $createMode = 0;
+
+        $tour_id = -1;
+        $tourname = "";
         $clientid = "";
         $hotelid = "";
         $date_arrival = "";
@@ -23,34 +29,34 @@
         $pay_status = "";
         $comment = ""; 
 
-        if(isset($_GET["orderid"]))
+        // Если режим редактирования
+        if(isset($_GET["tourid"]))
         {
              
-            $order_id = $_GET["orderid"];
+            $tour_id = $_GET["orderid"];
             mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
             //1. подключаемся к серверу
             $link = mysqli_connect($host, $user, $password, $database) 
             or die("Ошибка " . mysqli_error($link));
             //2. создадим  запрос
            
-            $query ="SELECT 
-                orders.orderid AS order_id,
+            $query =
+            "SELECT 
+                tours.id AS id, 
                 clients.first_name AS person_first_name, 
                 clients.second_name AS person_second_name, 
-                clients.id AS clientid,
-                hotels.name AS hotel_name,
-                hotels.id AS hot_id,
-                orders.order_registration_date AS order_date,
-                OrderName,
-                date_arrival, 
-                date_departure
-                FROM orders
-                    INNER JOIN clients 
-                        ON person_id = clients.id
-                    INNER JOIN hotels 
-                        ON hotel_id = hotels.id
-                WHERE 
-                    orders.orderid=".$order_id; 
+                hotels.name AS hotel_name, 
+                tours.begin_date AS begin_date, 
+                tours.end_date AS end_date, 
+                tours.comment AS comment, 
+                tours.price AS price, 
+                tours.pay_status AS pay_status
+            FROM 
+                tours
+            INNER JOIN clients ON client_id = clients.id
+            INNER JOIN hotels ON hotel_id = hotels.id
+                    WHERE 
+                        orders.orderid=".$order_id; 
 
 
             $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));     
@@ -58,14 +64,16 @@
 
             if(count($result))
             {
-
-                $OrderName = $result["OrderName"];
+                $tour_id = $result["id"];
+                $tourname = $result["name"];
                 $clientid = $result["clientid"];
-                $clientFIO =$result["person_first_name"].' '.$result["person_second_name"];
-                $hotelid = $result["hot_id"];
-                $date_arrival = date("Y-m-d", strtotime($result["date_arrival"]));
-                $date_departure = date("Y-m-d", strtotime($result["date_departure"]));   
-
+                $hotelid = $result["hotel_id"];
+                $date_arrival =  date("Y-m-d", strtotime($result["begin_date"]));
+                $date_departure = date("Y-m-d", strtotime($result["end_date"]));
+                
+                $price = $result["price"];
+                $pay_status = $result["pay_status"];
+                $comment = $result["comment"]; 
             }
             else
             {
@@ -75,16 +83,58 @@
         }    
 
 
-        $OrderName_mes = "";
+        $tourname_mes = "";
         $hotelid_mes = "";
         $date_arrival_mes = "";
         $date_departure_mes = "";
 
 
+        $price_mes = "";
+        $pay_status_mes = "";
+        $comment_mes = ""; 
+
         $error_num = 0;
         $input_num = 0;
 
        
+        if(isset($_POST['clientid'])){
+            $input_num++;
+            $clientid = $_POST['clientid'];
+            if(!is_numeric($clientid))
+            {
+                $clientid_mes = "не выбран пользователь";
+                $error_num ++;
+            }
+        }
+
+        if(isset($_POST['hotelid']) )
+        {
+            $input_num++;
+            $hotelid = $_POST['hotelid'];
+            if (!is_numeric($hotelid)){
+                $hotelid_mes = "не выбран отель";
+                $error_num ++; 
+            }
+        }
+        if(isset($_POST['date_arrival']) )
+        {
+            $input_num++;
+            $date_arrival = $_POST['date_arrival'];
+            if (!is_Date($date_arrival)){
+                $date_arrival_mes = "некорректная дата!";
+                $error_num ++; 
+            }
+        }
+        if(isset($_POST['date_departure']))
+        {
+            $input_num++;
+            $date_departure = $_POST['date_departure'];
+            if(!is_Date($date_arrival))
+            {
+                $date_departure_mes = "некорректная дата!";
+                $error_num ++;    
+            }
+        }
 
 
         if(isset($_POST['price'])){
@@ -196,8 +246,25 @@
 
                     <p><label> Название заявки: <input name="OrderName" type="text" value="<?echo $OrderName;?>" disabled></label></p>
                     
-                    <p><label> Клиент:  <input name="clientFIO" type="text" value="<?echo $clientFIO;?>" disabled></label></p>
+                    <? echo_input_error($clientid_mes); ?>
+                    <p><label> Клиент:  <select name="clientid" >
+                        <?
+                        // подключаемся к серверу
+                        $link = mysqli_connect($host, $user, $password, $database) 
+                        or die("Ошибка " . mysqli_error($link));
 
+                        // заюираем всех клиентов из базы данных
+                        $query ="SELECT * FROM clients";
+                        $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));  
+                        while($person = mysqli_fetch_array($result))
+                        {
+                            ?>
+                            <option  value="<?echo $person['id'];?>"  <?if($person['id'] == $clientid) echo "selected";?> ><?echo $person['first_name'].' '.$person['second_name'];?></option>
+                            <? 
+                        }
+                        ?>
+                    </select></label></p>
+                    
                     <p><label> Отель:  <select name="hotelid" disabled>
                         <?
                         // подключаемся к серверу
@@ -216,9 +283,14 @@
                         ?>
                         </select>
                     </label></p>
+                    
 
+
+
+                    <p><?echo_input_error($begin_date)?></p>
                     <p><label> Заселение: <input type="date" name="date_arrival" value="<?echo $date_arrival;?>" disabled></label></p>
-
+                    
+                    <p><?echo_input_error($end_date)?></p>
                     <p><label> Выезд: <input type="date" name="date_departure" value="<?echo $date_departure;?>" disabled></label></p>
                     
                     <p><?echo_input_error($price_mes)?></p>
