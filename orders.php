@@ -19,7 +19,7 @@
            
            <div id="preview1stline">
                 <div class="preview" id="orders">
-					<H2>Клиенты</H2>
+					<H2>Последние клиенты</H2>
                 <?
 					// подключаемся к серверу
 					$link = mysqli_connect($host, $user, $password, $database) 
@@ -44,6 +44,7 @@
 							<?
 						}
 						?>
+							<hr>
 							<a href="clients.php">просмотреть всех клиентов</a>
 						<?
 						// очищаем результат
@@ -106,6 +107,8 @@
 						}
 						?>
 						</table>
+						<hr>
+						<a href="allorders.php">просмотреть все заявки</a>
 						<?
 						// очищаем результат
 						mysqli_free_result($result);
