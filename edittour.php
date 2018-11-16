@@ -80,10 +80,6 @@
         $date_arrival_mes = "";
         $date_departure_mes = "";
 
-        $price_mes = "";
-        $pay_status_mes = "";
-        $comment_mes = ""; 
-
 
         $error_num = 0;
         $input_num = 0;
