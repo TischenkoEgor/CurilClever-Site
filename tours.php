@@ -12,7 +12,7 @@
 
         <div class="page">
             <H2>Создать</H2>
-            <a href="createtour2.php">создать тур</a> 
+            <a href="edittour.php?create=1">создать тур</a> 
             <br>
             <H2>Все туры агенства</H2> 
             <br>
@@ -61,7 +61,7 @@
                             <td><? echo date('Y-m-d', strtotime($row['begin_date']));?></td>
                             <td><? echo $row['end_date'];?></td>
                             <td><? echo $row['hotel_name'];?></td>
-                            <td><a href="controltour.php?id=<?echo $row['id'];?>"> управление </a></td> 
+                            <td><a href="edittour.php?tourid=<?echo $row['id'];?>"> управление </a></td> 
                         </tr>
 						<?
                     }
