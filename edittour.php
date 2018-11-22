@@ -271,7 +271,6 @@
          
             $stmt->execute();
             echo_positive_msg("тур успешно обновлен, бро!");
-            print_r($_POST);
         }
 
         // удалеие тура из базы
