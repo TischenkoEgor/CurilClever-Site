@@ -28,7 +28,7 @@
 				$link = mysqli_connect($host, $user, $password, $database) 
                 or die("Ошибка " . mysqli_error($link));
                 //2. создадим шаблон запроса
-                $sql = "INSERT INTO hotels ( name, addres, price , stars_rate, location)
+                $sql = "INSERT INTO hotels ( name, addres, price, location, stars_rate)
                         VALUES (?,?,?,?,?);";
                 //3. подготовим запрос       
                  $stmt = mysqli_prepare($link, $sql);  
