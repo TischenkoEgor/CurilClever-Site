@@ -12,6 +12,9 @@
 
         <div class="page">
             <H2>Управление отелями</H2>
+            <div>
+               <p> <a href="createhotel.php">ДОБАВИТЬ ОТЕЛЬ</a></p>
+           </div>         
             <div class='hotelstablecontainer'>
                 <table border="1">
                     
@@ -58,9 +61,7 @@
                 </table>
             </div>
 
-           <div>
-                <a href="createhotel.php">ДОБАВИТЬ ОТЕЛЬ</a>
-           </div>         
+          
 
         </div>
         <footer>
