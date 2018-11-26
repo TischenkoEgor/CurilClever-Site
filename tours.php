@@ -44,8 +44,10 @@
                         tours.pay_status AS pay_status
                     FROM 
                         tours
-                    INNER JOIN clients ON client_id = clients.id
-                    INNER JOIN hotels ON hotel_id = hotels.id
+                    INNER JOIN 
+                        clients ON client_id = clients.id
+                    INNER JOIN 
+                        hotels ON hotel_id = hotels.id
                     ORDER BY tours.id DESC";
 
 					$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 

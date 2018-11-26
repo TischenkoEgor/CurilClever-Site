@@ -18,7 +18,7 @@
            </div>
            
            <div id="preview1stline">
-                <div class="preview" id="orders">
+                <div class="preview" id="clients">
 					<H2>Последние клиенты</H2>
                 <?
 					// подключаемся к серверу
@@ -54,7 +54,7 @@
                     mysqli_close($link); 
                     ?>
                 </div>
-				<div class="preview" id="orders" style="width:650px;">
+				<div class="preview" id="orders">
 				<H2>Последние заявки</H2>
                 <?
 					// подключаемся к серверу
@@ -80,8 +80,9 @@
 					if($result)
 					{
 						?>
-						<table border="1" width="630">
+						<table border="1" width="690">
 							<tr>
+								<td><b></b></td>
 								<td><b>Имя</b></td>
 								<td><b>Фамилия</b></td>
 								<td><b>Название отеля</b></td>
@@ -96,6 +97,7 @@
 						
 							?>
 							<tr>
+								<td><? echo $row['order_id'];?></td>
 								<td><? echo $row['person_first_name'];?></td>
 								<td><? echo $row['person_second_name'];?></td>
 								<td><? echo $row['hotel_name'];?></td>

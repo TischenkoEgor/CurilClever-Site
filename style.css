@@ -64,13 +64,13 @@ ul.menulist {
     border-width: 2px;
     border-radius: 10px;
     border-color: rgb(61, 151, 211);
-   
-    height:350px;
+
     float: left;
     margin-top: 50px;
     margin-right: 20px;
     text-align: left;
     padding-left: 10px;
+    padding-bottom: 10px;
 }
 #LastOrders{
     width: 280px;
@@ -82,36 +82,61 @@ ul.menulist {
 #TopHotels{
     width: 240px;
 }
-
+#orders{
+    width: 700px;
+}
+#clients{
+    width: 400px;
+}
 
 .ordershortview{
     white-space: nowrap; /* Запрещаем перенос строк */
     overflow: hidden; /* Обрезаем все, что не помещается в область */
     text-overflow: ellipsis; /* Добавляем многоточие */
+    margin: 0px;
 }
+.tour_link{
+    color: black;
+    text-decoration: none;
+
+}
+.tour_link:hover{
+    color: red;
+    text-decoration: underline;
+  
+}
+.allitemslink{
+    color: black;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+.allitemslink:hover{
+    color: red;
+    text-decoration: underline;
+}
+.tourpreview{
+    margin: 0px;
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+}
+.tourpreview:hover{
+    white-space: normal ; /*  перенос строк */
+   
+}
+
 #touristtraveltoday{
     border-style: solid;
     border-width: 2px;
     border-radius: 10px;
     border-color: rgb(61, 151, 211);
     width: 1110px;
-    height: 380px;
+    min-height: 180px;
     margin:50px;
     float:left;
     text-align: left;
     padding-left: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
