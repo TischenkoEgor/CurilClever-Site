@@ -1,3 +1,6 @@
+<?
+    require "auth.php";
+?>
 <html>
 	<head>
 		<? require "head.php"; ?>

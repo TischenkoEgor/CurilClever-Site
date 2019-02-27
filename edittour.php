@@ -1,3 +1,6 @@
+<?
+    require "auth.php";
+?>
 <html>
 	<head>
 		<? require "head.php"; ?>
@@ -276,7 +279,7 @@
         // удалеие тура из базы
         if(isset($_POST['delete_tour']))
         {
-             //1. подключаемся к серверу
+            //1. подключаемся к серверу
             mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
             $link = mysqli_connect($host, $user, $password, $database) 
             or die("Ошибка " . mysqli_error($link));

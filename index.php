@@ -1,3 +1,5 @@
+<?require "auth.php";
+?>
 <html>
 	<head>
 		<? require "head.php"; ?>
@@ -128,7 +130,8 @@
 							
 							?>
 							<div> 
-							<a class="tour_link" href="edithotels.php?id=<?echo $hotel['0']?>"> 
+							
+							<a class="tour_link" href="edithotels.php?id=<?echo $row['id']?>"> 
 							<?
 								echo $row['stars_rate'].'* '.$row['name'].' '.$row['price'].'$' ; 
 							?>

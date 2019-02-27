@@ -1,0 +1,48 @@
+  <html lang="ru"> 
+    <head>
+        <meta charset="utf-8" />
+        <title>документ без названия</title>
+        <style>
+        .input-right{
+            text-align: right;
+            margin-right: 20px;
+        }
+        .form-box{
+            width: 500px;
+        }
+        input{
+            width: 203px;;
+        }
+        .container{
+            margin: 0 auto;
+            width: 500px;
+        }
+        body{
+            background-color: whitesmoke;
+        }
+        </style>
+    </head>
+    <body>  
+        <div class="container">
+            <h3>форма</h3> 
+            <form class="form-box" action="send.php" method="post"> 
+                <fieldset> 
+                    <legend>Данные для письма</legend>
+                    <p class="input-right">
+                        <label>ваше имя</label> 
+                        <input required type="text" placeholder="ФИО полностью"  name="first_name"></p>
+                    <p class="input-right">
+                        <label>электронная почта</label> 
+                        <input type="text" name="email" required placeholder="личный email"></p>
+                    <p class="input-right">
+                        <label>телефон</label> 
+                        <input type="text" name="phone" placeholder="в формате +7(999)-111-11-11"></p>
+                    <p class="input-right">
+                        <label>сообщение</label> 
+                        <textarea rows="5" name="message" ></textarea></p>
+                    <input type="submit" name="submit" value="отправить"/>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

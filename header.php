@@ -16,5 +16,31 @@
 		<a id="calllink" href="#"><h3>заказать звонок</h3> </a>
 		<hr>
 		<h3>+7 (654) 123 44 55</h3>
+		<?
+			if(isset($_SESSION['userid']))    
+			{
+				// 1. подключаемся к серверу
+				mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+				$link = mysqli_connect($host, $user, $password, $database) 
+					or die("Ошибка " . mysqli_error($link));
+				// 2. выполняем операции с базой данных
+				$query = 
+				"SELECT * 
+				FROM 
+					users 
+				WHERE 
+					id=".$_SESSION['userid'];
+				$result = mysqli_query($link, $query) or die("Ошибка ".mysqli_error($link));
+				
+				$result = mysqli_fetch_assoc($result);
+				if(count($result))
+				{
+					?>
+					<p> вы вошли как <?echo $result["username"]?>
+					<a href="logout.php">Выйти</a> </p>
+					<?
+				}
+			}
+		?>
 	</div>
 </div>

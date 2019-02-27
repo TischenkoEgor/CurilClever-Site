@@ -1,3 +1,6 @@
+<?
+    require "auth.php";
+?>
 <html>
 	<head>
 		<? require "head.php"; ?>
@@ -15,7 +18,6 @@
         $hotelid = "";
         $date_arrival = "";
         $date_departure = "";
-
 
         $OrderName_mes = "";
         $clientid_mes = "";
